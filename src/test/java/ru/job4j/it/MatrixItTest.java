@@ -1,12 +1,12 @@
 package ru.job4j.it;
 
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class MatrixItTest {
     @Test
@@ -34,7 +34,8 @@ public class MatrixItTest {
     @Test
     public void whenFirstEmptyThenNext() {
         int[][] in = {
-                {}, {1}
+                {},
+                {1}
         };
         MatrixIt it = new MatrixIt(in);
         assertThat(it.next(), is(1));
@@ -43,7 +44,8 @@ public class MatrixItTest {
     @Test
     public void whenFirstEmptyThenHashNext() {
         int[][] in = {
-                {}, {1}
+                {},
+                {1}
         };
         MatrixIt it = new MatrixIt(in);
         assertThat(it.hasNext(), is(true));
@@ -52,7 +54,8 @@ public class MatrixItTest {
     @Test
     public void whenRowHasDiffSize() {
         int[][] in = {
-                {1}, {2, 3}
+                {1},
+                {2, 3}
         };
         MatrixIt it = new MatrixIt(in);
         assertThat(it.next(), is(1));
@@ -63,7 +66,11 @@ public class MatrixItTest {
     @Test
     public void whenFewEmpty() {
         int[][] in = {
-                {1}, {}, {}, {}, {2}
+                {1},
+                {},
+                {},
+                {},
+                {2}
         };
         MatrixIt it = new MatrixIt(in);
         assertThat(it.next(), is(1));
