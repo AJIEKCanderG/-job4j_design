@@ -10,9 +10,6 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SimpleArrayTest {
-//Добавьте самостоятельно тесты проверяющее расширение массива
-// (например создали список длинной 2 добавили 3 элемента,
-// проверили что все 3 есть в списке)
 
     @Test
     public void whenAddThreeInTwoSize() {
