@@ -34,7 +34,6 @@ public class SimpleArray<T> implements Iterable<T> {
         capacity(size + 1);
         modCount++;
         container[size++] = model;
-
     }
 
     @Override
