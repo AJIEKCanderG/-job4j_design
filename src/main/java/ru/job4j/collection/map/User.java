@@ -39,6 +39,7 @@ public class User {
         User userOne = new User("Pavel", 2, birthday);
         User userTwo = new User("Pavel", 2, birthday);
         user.put(userOne, new Object());
+        System.out.println(user + "\n");
         user.put(userTwo, new Object());
         System.out.println(user + "\n");
 
