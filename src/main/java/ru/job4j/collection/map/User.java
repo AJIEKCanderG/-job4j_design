@@ -27,32 +27,32 @@ public class User {
                 birthday.equals(user.birthday);
     }
 
-   /*    @Override
+    @Override
     public int hashCode() {
         return Objects.hash(name, children, birthday);
-    }*/
+    }
 
     public static void main(String[] args) {
-            Map<User, Object> user = new HashMap<>();
-            Calendar birthday = new GregorianCalendar(1980, Calendar.APRIL, 19, 13, 13, 10);
-            birthday.set(Calendar.MILLISECOND, 9);
-            User userOne = new User("Pavel", 2, birthday);
-            User userTwo = new User("Pavel", 2, birthday);
-            user.put(userOne, new Object());
-            user.put(userTwo, new Object());
-            System.out.println(user + "\n");
+        Map<User, Object> user = new HashMap<>();
+        Calendar birthday = new GregorianCalendar(1980, Calendar.APRIL, 19, 13, 13, 10);
+        birthday.set(Calendar.MILLISECOND, 9);
+        User userOne = new User("Pavel", 2, birthday);
+        User userTwo = new User("Pavel", 2, birthday);
+        user.put(userOne, new Object());
+        user.put(userTwo, new Object());
+        System.out.println(user + "\n");
 
-            System.out.println("userOne hashCode = " + userOne.hashCode());
-            int h1 = userOne.hashCode() ^ userOne.hashCode() >>> 16;
-            System.out.println("userOne hash = " + h1);
-            int i1 = (16 - 1) & h1;
-            System.out.println("Индекс бакета userOne = " + i1 + "\n");
+        System.out.println("userOne hashCode = " + userOne.hashCode());
+        int h1 = userOne.hashCode() ^ userOne.hashCode() >>> 16;
+        System.out.println("userOne hash = " + h1);
+        int i1 = (16 - 1) & h1;
+        System.out.println("Индекс бакета userOne = " + i1 + "\n");
 
-            System.out.println("userTwo hashCode = " + userTwo.hashCode());
-            int h2 = userTwo.hashCode() ^ userTwo.hashCode() >>> 16;
-            System.out.println("userTwo hash = " + h2);
-            int i2 = (16 - 1) & h2;
-            System.out.println("Индекс бакета userTwo = " + i2);
+        System.out.println("userTwo hashCode = " + userTwo.hashCode());
+        int h2 = userTwo.hashCode() ^ userTwo.hashCode() >>> 16;
+        System.out.println("userTwo hash = " + h2);
+        int i2 = (16 - 1) & h2;
+        System.out.println("Индекс бакета userTwo = " + i2);
 
 
     }
