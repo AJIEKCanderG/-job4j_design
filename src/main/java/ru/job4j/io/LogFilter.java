@@ -21,7 +21,7 @@ public class LogFilter {
                 new BufferedOutputStream(
                         new FileOutputStream("C:/projects/job4j_design/404.txt")
                 ))) {
-            for(String str: log) {
+            for (String str: log) {
                 out.write(str + System.lineSeparator());
             }
         } catch (Exception e) {
