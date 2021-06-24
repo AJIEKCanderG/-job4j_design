@@ -22,7 +22,7 @@ public class Config {
                     .filter(x -> x.length() > 0 && !x.contains("#"))
                     .forEach(elem -> {
                 String[] k = elem.split("=");
-                if(k.length < 2) {
+                if (k.length != 2) {
                     throw new IllegalArgumentException();
                 }
                 values.put(k[0], k[1]);
@@ -48,7 +48,7 @@ public class Config {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Config("app.properties"));
+        System.out.println(new Config("C:\\projects\\job4j_design\\src\\main\\resources\\app.properties"));
     }
 
 }

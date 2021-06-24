@@ -14,7 +14,7 @@ public class ConfigTest {
         URL path = ClassLoader.getSystemResource("pair_without_comment.properties");
         Config config = new Config(path.getPath());
         config.load();
-        assertThat(config.value("name"),is("Petr Arsentev"));
+        assertThat(config.value("name"), is("Petr Arsentev"));
     }
 
     @Test
@@ -22,6 +22,6 @@ public class ConfigTest {
         URL path = ClassLoader.getSystemResource("pair_with_comment.properties");
         Config config = new Config(path.getPath());
         config.load();
-        assertThat(config.value("name"),is("Petr Arsentev"));
+        assertThat(config.value("name"), is("Petr Arsentev"));
     }
 }
