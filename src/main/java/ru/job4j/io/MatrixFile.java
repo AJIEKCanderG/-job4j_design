@@ -19,7 +19,7 @@ public class MatrixFile {
     }
 
     public static void main(String[] args) {
-        try (FileOutputStream out = new FileOutputStream("C:/projects/job4j_design/src/main/java/resources/Matrix.txt")) {
+        try (FileOutputStream out = new FileOutputStream("C:/projects/job4j_design/src/main/resources/Matrix.txt")) {
             out.write(multiple(9).getBytes());
         } catch (Exception e) {
             e.printStackTrace();

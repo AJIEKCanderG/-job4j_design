@@ -30,11 +30,11 @@ public class LogFilter {
     }
 
     public static void main(String[] args) {
-        List<String> log = filter("C:/projects/job4j_design/src/main/java/resources/log.txt");
+        List<String> log = filter("C:/projects/job4j_design/src/main/resources/log.txt");
         for (String logs : log) {
             System.out.println(logs);
         }
-        save(log, "C:/projects/job4j_design/src/main/java/resources/404.txt");
+        save(log, "C:/projects/job4j_design/src/main/resources/404.txt");
 
     }
 }
