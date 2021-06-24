@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 
 public class EvenNumberFile {
     public static void main(String[] args) {
-        try (FileInputStream in = new FileInputStream("C:/projects/job4j_design/even.txt")) {
+        try (FileInputStream in = new FileInputStream("C:/projects/job4j_design/src/main/java/resources/even.txt")) {
             StringBuilder text = new StringBuilder();
             int read;
             while ((read = in.read())  != -1) {
