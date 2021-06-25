@@ -1,5 +1,6 @@
 package ru.job4j.io;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.net.URL;
@@ -15,6 +16,7 @@ public class ConfigTest {
         Config config = new Config(path.getPath());
         config.load();
         assertThat(config.value("name"), is("Petr Arsentev"));
+        assertThat(config.value("surname"), is(Matchers.nullValue()));
     }
 
     @Test
