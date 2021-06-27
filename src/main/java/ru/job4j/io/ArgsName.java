@@ -13,12 +13,12 @@ public class ArgsName {
     }
 
     private void parse(String[] args) {
-        if(args.length < 2) {
+        if (args.length < 2) {
             throw new IllegalArgumentException();
         }
         for (String param: args) {
-            String[] str = param.replaceAll("-","").split("=");
-            if(str.length < 2) {
+            String[] str = param.replaceAll("-", "").split("=");
+            if (str.length < 2) {
                 throw new IllegalArgumentException();
         }
             values.put(str[0], str[1]);
