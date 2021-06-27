@@ -22,9 +22,7 @@ public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
                 file.toFile().length(),
                 file.getFileName().toString()
         );
-        if (findFiles.contains(new FileProperty(
-                file.toFile().length(),
-                file.getFileName().toString()))) {
+        if (findFiles.contains(checkFile)) {
             System.out.println(file.toAbsolutePath() + " : " + file.toFile().length());
         } else {
             findFiles.add(checkFile);
