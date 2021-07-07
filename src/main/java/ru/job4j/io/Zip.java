@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-//java -jar pack.jar -d=C:\projects\job4j_design\ -e=xml -o=project_design.zip
+/**
+ * Аргументы переданные в проект
+ * -d=C:\projects\job4j_design\ -e=class -o=job4j_design.zip
+ */
+
 
 public class Zip {
 
