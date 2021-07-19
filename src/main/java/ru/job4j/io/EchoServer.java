@@ -23,7 +23,6 @@ public class EchoServer {
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                    out.write("Hello, dear friend.".getBytes());
                     String str = in.readLine();
                     while (str != null && !str.isEmpty()) {
                         if (str.startsWith("GET") && str.contains("Hello")
