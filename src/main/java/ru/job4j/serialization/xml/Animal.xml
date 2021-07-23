@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<animal spotted="false" age="3">
+    <cat food="meat"/>
+    <names>
+        <nameses>Barsik</nameses>
+        <nameses>Murka</nameses>
+        <nameses>Genry</nameses>
+    </names>
+</animal>
