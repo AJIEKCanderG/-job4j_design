@@ -6,7 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.util.Arrays;
 
 public class Animal {
-    private final boolean spotted ;
+    private final boolean spotted;
     private final int age;
     private final Cat cat;
     private final String[] names;

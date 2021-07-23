@@ -9,7 +9,7 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * Аргументы переданные в проект
- * -d=C:\projects\job4j_design\ -e=class -o=job4j_design.zip
+ * -d=C:\projects\job4j_design\ -e=class -o=./src/main/resources/job4j_design.zip
  */
 
 
