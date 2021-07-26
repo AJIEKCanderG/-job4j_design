@@ -1,15 +1,29 @@
 package ru.job4j.serialization.json;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.*;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.Arrays;
 
+@XmlRootElement(name = "animal")
+@XmlAccessorType(XmlAccessType.FIELD)
+
 public class Animal {
-    private final boolean spotted;
-    private final int age;
-    private final Cat cat;
-    private final String[] names;
+    @XmlAttribute
+    private boolean spotted;
+
+    @XmlAttribute
+    private int age;
+    private Cat cat;
+    @XmlElementWrapper(name = "names")
+    @XmlElement(name = "name")
+    private String[] names;
+
+    public Animal() {
+    }
 
     public Animal(boolean spotted, int age, Cat cat, String... names) {
         this.spotted = spotted;
@@ -28,26 +42,28 @@ public class Animal {
                 + '}';
     }
 
-    public static void main(String[] args) {
-        final Animal animal = new Animal(false, 3, new Cat("meat"), "Barsik", "Murka", "Genry");
+    public static void main(String[] args) throws Exception {
+        Animal animal = new Animal(false, 3, new Cat("meat"), "Barsik", "Murka", "Genry");
 
-        /* Преобразуем объект person в json-строку. */
-        final Gson gson = new GsonBuilder().create();
-        System.out.println(gson.toJson(animal));
-
-        /* Модифицируем json-строку */
-        final String animalJson =
-                "{"
-                        + "\"spotted\":false,"
-                        + "\"age\":3,"
-                        + "\"cat\":"
-                        + "{"
-                        + "\"food\":\"meat\""
-                        + "},"
-                        + "\"names\":"
-                        + "[\"Barsik\",\"Murka\",\"Genry\"]"
-                        + "}";
-        final Animal animalMod = gson.fromJson(animalJson, Animal.class);
-        System.out.println(animalMod);
+        // Получаем контекст для доступа к АПИ
+        JAXBContext context = JAXBContext.newInstance(Animal.class);
+        // Создаем сериализатор
+        Marshaller marshaller = context.createMarshaller();
+        // Указываем, что нам нужно форматирование
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        String str;
+        try (StringWriter writer = new StringWriter()) {
+            // Сериализуем
+            marshaller.marshal(animal, writer);
+            str = writer.getBuffer().toString();
+            System.out.println(str);
+        }
+        // Для десериализации нам нужно создать десериализатор
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        try (StringReader reader = new StringReader(str)) {
+            // десериализуем
+            Animal result = (Animal) unmarshaller.unmarshal(reader);
+            System.out.println(result);
+        }
     }
 }
