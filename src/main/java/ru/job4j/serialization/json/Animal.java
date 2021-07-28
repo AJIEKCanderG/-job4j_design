@@ -1,17 +1,19 @@
 package ru.job4j.serialization.json;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import javax.xml.bind.annotation.*;
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @XmlRootElement(name = "animal")
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class Animal {
+
+
     @XmlAttribute
     private boolean spotted;
 
@@ -32,6 +34,14 @@ public class Animal {
         this.names = names;
     }
 
+    public boolean isSpotted() {
+        return spotted;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
     @Override
     public String toString() {
         return "Animal{"
@@ -43,27 +53,28 @@ public class Animal {
     }
 
     public static void main(String[] args) throws Exception {
-        Animal animal = new Animal(false, 3, new Cat("meat"), "Barsik", "Murka", "Genry");
+        // Animal animal = new Animal(false, 3, new Cat("meat"), "Barsik", "Murka", "Genry");
 
-        // Получаем контекст для доступа к АПИ
-        JAXBContext context = JAXBContext.newInstance(Animal.class);
-        // Создаем сериализатор
-        Marshaller marshaller = context.createMarshaller();
-        // Указываем, что нам нужно форматирование
-        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        String str;
-        try (StringWriter writer = new StringWriter()) {
-            // Сериализуем
-            marshaller.marshal(animal, writer);
-            str = writer.getBuffer().toString();
-            System.out.println(str);
-        }
-        // Для десериализации нам нужно создать десериализатор
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        try (StringReader reader = new StringReader(str)) {
-            // десериализуем
-            Animal result = (Animal) unmarshaller.unmarshal(reader);
-            System.out.println(result);
-        }
+        JSONObject jsonAnimal = new JSONObject("{\"food\":\"fish\"}");
+
+        /* JSONArray из ArrayList */
+        List<String> list = new ArrayList<>();
+        list.add("Murzik");
+        list.add("Stesha");
+        JSONArray jsonStatuses = new JSONArray(list);
+
+        /* JSONObject напрямую методом put */
+        Animal animal = new Animal(false, 3, new Cat("meat"), "Barsik", "Murka", "Genry");
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("spotted", animal.isSpotted());
+        jsonObject.put("age", animal.getAge());
+        jsonObject.put("cat", jsonAnimal);
+        jsonObject.put("names", jsonStatuses);
+
+        /* Выведем результат в консоль */
+        System.out.println(jsonObject);
+
+        /* Преобразуем объект person в json-строку */
+        System.out.println(new JSONObject(animal));
     }
 }
