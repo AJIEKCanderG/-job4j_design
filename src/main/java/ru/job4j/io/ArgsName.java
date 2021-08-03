@@ -1,27 +1,32 @@
 package ru.job4j.io;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class ArgsName {
 
-    private final Map<String, String> values = new HashMap<>();
+    private final Map<String, String> values;
+
+    public ArgsName() {
+        values = new HashMap<>();
+    }
 
     public String get(String key) {
         return values.get(key);
     }
 
     private void parse(String[] args) {
-        if (args.length < 2) {
-            throw new IllegalArgumentException();
-        }
-        for (String param: args) {
-            String[] str = param.replaceAll("-", "").split("=");
-            if (str.length < 2) {
+        for (String arg : args) {
+            String[] str = arg.split("=");
+            if (
+                    str.length != 2
+                            || str[0].isEmpty()
+                            || str[1].isEmpty()
+                            || !str[0].startsWith("-")
+            ) {
                 throw new IllegalArgumentException();
-        }
-            values.put(str[0], str[1]);
+            }
+            values.put(str[0].substring(1), str[1]);
         }
     }
 
@@ -29,6 +34,10 @@ public class ArgsName {
         ArgsName names = new ArgsName();
         names.parse(args);
         return names;
+    }
+
+    public int size() {
+        return values.size();
     }
 
     public static void main(String[] args) {

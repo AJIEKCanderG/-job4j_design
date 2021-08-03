@@ -1,8 +1,12 @@
 package ru.job4j.io;
 
-
 import java.io.File;
 import java.util.Objects;
+
+ /** Аргументы переданные в проект:
+  * C:\projects\job4j_design
+  * задана папка.
+  * */
 
 public class Dir {
     public static void main(String[] args) {

@@ -7,6 +7,11 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Predicate;
 
+/** Аргументы переданные в проект:
+ * C:\projects\job4j_design .txt
+ * задана папка для поиска и расшриние файлов поиска.
+ * */
+
 public class Search {
     public static void main(String[] args) throws IOException {
         if (args.length == 0) {
