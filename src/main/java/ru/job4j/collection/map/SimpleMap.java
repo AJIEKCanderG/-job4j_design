@@ -50,13 +50,11 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     private int hash(int hashCode) {
-        //  return hashCode % table.length;
         return hashCode ^ (hashCode >>> 16);
     }
 
     private int indexFor(int hash) {
         return hash & (table.length - 1);
-        //  return hash % capacity;
     }
 
     private int indexOf(K key) {
@@ -140,6 +138,5 @@ public class SimpleMap<K, V> implements Map<K, V> {
             this.key = key;
             this.value = value;
         }
-
     }
 }

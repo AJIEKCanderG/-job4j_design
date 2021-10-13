@@ -53,17 +53,14 @@ public class Animal {
     }
 
     public static void main(String[] args) throws Exception {
-        // Animal animal = new Animal(false, 3, new Cat("meat"), "Barsik", "Murka", "Genry");
 
         JSONObject jsonAnimal = new JSONObject("{\"food\":\"fish\"}");
 
-        /* JSONArray из ArrayList */
         List<String> list = new ArrayList<>();
         list.add("Murzik");
         list.add("Stesha");
         JSONArray jsonStatuses = new JSONArray(list);
 
-        /* JSONObject напрямую методом put */
         Animal animal = new Animal(false, 3, new Cat("meat"), "Barsik", "Murka", "Genry");
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("spotted", animal.isSpotted());
@@ -71,10 +68,8 @@ public class Animal {
         jsonObject.put("cat", jsonAnimal);
         jsonObject.put("names", jsonStatuses);
 
-        /* Выведем результат в консоль */
         System.out.println(jsonObject);
 
-        /* Преобразуем объект person в json-строку */
         System.out.println(new JSONObject(animal));
     }
 }
