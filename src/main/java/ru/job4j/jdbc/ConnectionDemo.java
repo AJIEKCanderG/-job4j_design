@@ -16,7 +16,7 @@ public class ConnectionDemo {
         cfg.load();
         String url = cfg.value("url");
         Class.forName(cfg.value("driver_class"));
-        String login = cfg.value("username");
+        String login = cfg.value("login");
         String password = cfg.value("password");
         try (Connection connection = DriverManager.getConnection(url, login, password)) {
             DatabaseMetaData metaData = connection.getMetaData();
