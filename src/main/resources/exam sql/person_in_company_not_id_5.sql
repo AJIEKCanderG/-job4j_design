@@ -1,1 +1,1 @@
-select name from person WHERE NOT company_id = 5;
+select p.name, c.name from person p full join company c on c.id = p.company_id WHERE NOT company_id = 5;

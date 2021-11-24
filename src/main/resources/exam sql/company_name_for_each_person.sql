@@ -1,1 +1,0 @@
-select p.name, c.name from person p full join company c on c.id = p.company_id;        //чтобы вывести тех у кого id_company null
