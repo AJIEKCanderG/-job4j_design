@@ -1,0 +1,1 @@
+select name from person WHERE NOT company_id = 5;
