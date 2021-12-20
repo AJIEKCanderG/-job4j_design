@@ -9,9 +9,9 @@ public class UserDemo {
     private static final Runtime ENVIRONMENT = Runtime.getRuntime();
 
     public static void info() {
-        final long freeMemory = ENVIRONMENT.freeMemory();  //TODO возвращает количество свободной памяти в байтах
-        final long totalMemory = ENVIRONMENT.totalMemory(); //TODO возвращает общее количество памяти которое может быть использовано
-        final long maxMemory = ENVIRONMENT.maxMemory(); // TODO  возвращает максимальное количество памяти которое может быть использовано
+        final long freeMemory = ENVIRONMENT.freeMemory();
+        final long totalMemory = ENVIRONMENT.totalMemory();
+        final long maxMemory = ENVIRONMENT.maxMemory();
         System.out.println("=== Environment state ===");
         System.out.printf("Free: %d%n", freeMemory / MB);
         System.out.printf("Total: %d%n", totalMemory / MB);
@@ -22,7 +22,7 @@ public class UserDemo {
         for (int i = 0; i < 500_000_000; i++) {
             new User(i, "Name" + i);
         }
-        System.gc(); //TODO вызывает сборщик мусора
+        System.gc();
         info();
     }
 }
